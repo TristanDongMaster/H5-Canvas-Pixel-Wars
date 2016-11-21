@@ -1,6 +1,6 @@
 # 名称
 	像素大战
-	demo: https://tristandongmaster.github.io/H5-Canvas---/
+	<a href='https://tristandongmaster.github.io/H5-Canvas-Pixel-Wars/'>demo</a>
 
 ## 操作
 	1. 像素人自动运动
