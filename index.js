@@ -17,18 +17,24 @@
       context.restore();
     }
 
-    function deleteCircle(pX, pY) {
+    function deleteCircle(pX, pY, d) {
       var arrCopy = arr;
       var length = arrCopy.length;
       var result = arrCopy.filter(function(item, index) {
-        if (item.x <= pX || item.x >= (pX + 50 ) || item.y <= (pY-30) || item.y >= (pY +30 ) ||  up1 == false||right1 == false) {
-          return item
+        if(right1 == true){
+          if(item.x <= pX || item.x >= (pX + 50 ) || item.y <= (pY-40) || item.y >= (pY + 40 )){
+            return item
+          }
+        }else if(right1 == false){
+            if(item.x >= pX || item.x <= (pX - 50 ) || item.y <= (pY-40) || item.y >= (pY + 40 )){
+              return item
+            }
         }
       })
       return result
     }
     // 1.5 0.25 1.75
-    function sector(pX, pY, degree) {
+    function sector(pX, pY, degree, d) {
       context.save();
       context.strokeStyle = "#49f"; //设置描边样式 
       context.fillStyle = "green";
@@ -36,7 +42,11 @@
       context.beginPath(); //路径开始 
       context.moveTo(pX + 10, pY);
       var p = (2 - degree) / 2;
-      context.arc(pX, pY, 50, p * Math.PI, (2 - p) * Math.PI); //用于绘制圆弧context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+     if(d == 'left'){
+       context.arc(pX, pY, 50, (p-1) * Math.PI, (1 - p) * Math.PI); 
+     }else{
+      context.arc(pX, pY, 50, (p ) * Math.PI, (2 - p) * Math.PI); //用于绘制圆弧context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+     }
       context.lineTo(pX + 10, pY);
       context.closePath(); //路径结束
       context.stroke(); //绘制 
@@ -170,13 +180,13 @@
         circle(arr[i].x, arr[i].y, 10);
       }
       //circle(pX, pY)
-        //circle(pX1, pY1)
-      sector(pX1, pY1, degree1)
+      //circle(pX1, pY1)
+      sector(pX1, pY1, degree1, right1 ==true?'':'left')
       var openR = openPosition(open, degree1)
       open = openR.open;
       degree1 = openR.degree;
 
-      arr = deleteCircle(pX1, pY1)
+      arr = deleteCircle(pX1, pY1, right1 ==true?'':'left')
 
     }());
 
