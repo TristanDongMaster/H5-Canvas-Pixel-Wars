@@ -1,5 +1,6 @@
 # 名称
 	像素大战
+	[demo](https://tristandongmaster.github.io/H5-Canvas-Pixel-Wars/)
 	see [demo](https://tristandongmaster.github.io/H5-Canvas-Pixel-Wars/)
 
 ## 操作
